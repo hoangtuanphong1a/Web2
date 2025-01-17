@@ -1,19 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Chi tiết người dùng</title>
+    <title>User Detail</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .user-info {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .info-row {
+            margin-bottom: 10px;
+        }
+        .label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .edit-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .edit-button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            color: green;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-<h2>Thông tin người dùng</h2>
-<div th:if="${message}" style="color: green;" th:text="${message}"></div>
+<div class="container">
+    <h2>Thông tin người dùng</h2>
 
-<div>
-    <p>Họ tên: <span th:text="${user.fullName}"></span></p>
-    <p>Email: <span th:text="${user.email}"></span></p>
-    <p>SĐT: <span th:text="${user.phone}"></span></p>
-    <p>Địa chỉ: <span th:text="${user.address}"></span></p>
+    <div th:if="${message}" class="message" th:text="${message}"></div>
+
+    <div class="user-info">
+        <div class="info-row">
+            <span class="label">Họ và tên:</span>
+            <span th:text="${user.fullName}"></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Email:</span>
+            <span th:text="${user.email}"></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Số điện thoại:</span>
+            <span th:text="${user.phone}"></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Địa chỉ:</span>
+            <span th:text="${user.address}"></span>
+        </div>
+    </div>
+
+    <a th:href="@{/edit/{id}(id=${user.id})}" class="edit-button">Chỉnh sửa thông tin</a>
 </div>
-
-<a th:href="@{/edit/{id}(id=${user.id})}">Sửa thông tin</a>
 </body>
 </html>
