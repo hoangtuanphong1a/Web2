@@ -1,0 +1,37 @@
+<form action="/users/edit" method="post">
+    <input type="hidden" name="id" th:value="${user.id}" />
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" th:value="${user.email}" required />
+    </div>
+
+    <div>
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="password" />
+    </div>
+
+    <div>
+        <label for="roles">Vai trò:</label>
+        <select multiple id="roles" name="selectedRoles">
+            <th:block th:each="role : ${roles}">
+                <option th:value="${role.id}" th:text="${role.name}"
+                        th:if="${user.roles.contains(role)}" selected="selected"></option>
+            </th:block>
+        </select>
+    </div>
+
+    <div>
+        <label for="company">Công ty:</label>
+        <select id="company" name="companyId" required>
+            <th:block th:each="company : ${companies}">
+                <option th:value="${company.id}" th:text="${company.name}"
+                        th:if="${user.company.id == company.id}" selected="selected"></option>
+            </th:block>
+        </select>
+    </div>
+
+    <div>
+        <button type="submit">Cập nhật người dùng</button>
+    </div>
+</form>
