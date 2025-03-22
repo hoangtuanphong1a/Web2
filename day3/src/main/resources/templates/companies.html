@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Companies</title>
+    <meta charset="UTF-8">
+    <style>
+        table { width: 60%; margin: auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid black; text-align: center; }
+        a { text-decoration: none; padding: 5px; background-color: #28a745; color: white; border-radius: 5px; }
+    </style>
+</head>
+<body>
+<h1>Company List</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Company Name</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="company : ${companies}">
+        <td th:text="${company.id}"></td>
+        <td th:text="${company.companyName}"></td>
+        <td>
+            <a th:href="@{/companies/edit/{id}(id=${company.id})}">Edit</a>
+            <a th:href="@{/companies/delete/{id}(id=${company.id})}" style="background-color: red;">Delete</a>
+        </td>
+    </tr>
+</table>
+<br>
+<a href="/companies/add">Add New Company</a>
+<a href="/">Home</a>
+</body>
+</html>

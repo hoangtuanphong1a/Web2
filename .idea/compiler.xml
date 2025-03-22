@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="day3" />
+        <module name="dayt2" />
+        <module name="bai_tap_5" />
+      </profile>
+      <profile name="Annotation profile for day2_2" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+        </processorPath>
+        <module name="bai4" />
+        <module name="Day1" />
+        <module name="day4" />
+        <module name="Day2" />
+        <module name="day5" />
+        <module name="day2_2" />
+        <module name="demo" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Day1" options="-parameters" />
+      <module name="Day2" options="-parameters" />
+      <module name="bai4" options="-parameters" />
+      <module name="bai_tap_5" options="-parameters" />
+      <module name="day2_2" options="-parameters" />
+      <module name="day3" options="-parameters" />
+      <module name="day4" options="-parameters" />
+      <module name="day5" options="-parameters" />
+      <module name="dayt2" options="-parameters" />
+      <module name="demo" options="-parameters" />
+    </option>
+  </component>
+</project>
