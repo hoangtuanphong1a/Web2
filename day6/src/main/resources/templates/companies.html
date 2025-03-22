@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Management</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: linear-gradient(135deg, #74ebd5, #acb6e5); min-height: 100vh; padding: 20px; color: #333; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); }
+        h1 { text-align: center; color: #2c3e50; margin-bottom: 25px; font-size: 28px; }
+        .form-section, .list-section { margin-bottom: 35px; }
+        .form-section h2, .list-section h2 { color: #2980b9; margin-bottom: 15px; font-size: 22px; }
+        form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        input[type="text"] { padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; width: 100%; }
+        input:focus { border-color: #3498db; outline: none; box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); }
+        button { padding: 12px; background: #3498db; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; transition: background 0.3s; grid-column: span 2; }
+        button:hover { background: #2980b9; }
+        .list-section ul { list-style: none; }
+        .list-section li { background: #f9f9f9; padding: 15px; margin-bottom: 10px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .list-section li:hover { background: #f1f1f1; }
+        .list-section li form { display: inline; margin: 0; }
+        .list-section li button { background: #e74c3c; padding: 8px 15px; font-size: 14px; }
+        .list-section li button:hover { background: #c0392b; }
+        .edit-button { background: #f1c40f; margin-right: 10px; }
+        .edit-button:hover { background: #d4ac0d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Company Management</h1>
+
+        <!-- Form tạo Company -->
+        <div class="form-section">
+            <h2>Create Company</h2>
+            <form th:action="@{/companies}" th:object="${newCompany}" method="POST">
+                <input type="text" th:field="*{companyName}" placeholder="Company Name" required>
+                <div></div>
+                <button type="submit">Add Company</button>
+            </form>
+        </div>
+
+        <!-- Form sửa Company -->
+        <div class="form-section">
+            <h2>Edit Company</h2>
+            <form th:action="@{/companies/update/__${editCompany.id}__}" th:object="${editCompany}" method="POST">
+                <input type="text" th:field="*{companyName}" placeholder="Company Name" required>
+                <div></div>
+                <button type="submit">Update Company</button>
+            </form>
+        </div>
+
+        <!-- Danh sách Companies -->
+        <div class="list-section">
+            <h2>Companies</h2>
+            <ul>
+                <li th:each="company : ${companies}">
+                    <span th:text="${company.companyName} + ' (ID: ' + ${company.id} + ')'"></span>
+                    <div>
+                        <a th:href="@{/companies/edit/__${company.id}__}" class="edit-button" style="padding: 8px 15px; color: white; text-decoration: none; border-radius: 6px;">Edit</a>
+                        <form th:action="@{/companies/delete/__${company.id}__}" method="POST" style="display: inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                </li>
+                <li th:if="${#lists.isEmpty(companies)}">No companies available</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
