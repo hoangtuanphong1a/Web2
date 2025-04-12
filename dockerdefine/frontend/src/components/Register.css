@@ -1,0 +1,20 @@
+.custom-radio {
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  .custom-radio input[type='radio'] {
+    accent-color: #007bff;
+    transform: scale(1.2);
+    margin-right: 8px;
+  }
+  .shadow-lg {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  .border-0 {
+    border: none;
+  }
+  .min-vh-100 {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+  
